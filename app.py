@@ -11,7 +11,7 @@ app = Flask(__name__)
 RESULT_FOLDER = os.path.join('static')
 app.config['RESULT_FOLDER'] = RESULT_FOLDER
 
-model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True).autoshape()  # for PIL/cv2/np inputs and NMS
+model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
 model.eval()
 
 def get_prediction(img_bytes):
@@ -33,9 +33,9 @@ def predict():
 
         img_bytes = file.read()
         results = get_prediction(img_bytes)
-        results.save()  # save as results1.jpg, results2.jpg... etc.
-        os.rename("results0.jpg", "static/results0.jpg")
+
+        results.save(save_dir='static')
 
         full_filename = os.path.join(app.config['RESULT_FOLDER'], 'results0.jpg')
-        return redirect('static/results0.jpg')
+        return redirect('static/image0.jpg')
     return render_template('index.html')

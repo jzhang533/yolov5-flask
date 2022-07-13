@@ -11,7 +11,7 @@ then, visit http://localhost:5000/ in your browser
 
 - pytorch >= 1.6
 - flask
-- pillow
+- and [dependencies](https://github.com/ultralytics/yolov5/blob/master/requirements.txt) required by [ultralytics/yolov5](https://github.com/ultralytics/yolov5)
 
 ## reference
 - https://github.com/ultralytics/yolov5
